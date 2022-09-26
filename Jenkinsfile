@@ -17,7 +17,7 @@ pipeline {
 
     stage('d') {
       steps {
-        sshPublisher(alwaysPublishFromMaster: true)
+        sshPublisher(alwaysPublishFromMaster: true, masterNodeName: '0999')
       }
     }
 
