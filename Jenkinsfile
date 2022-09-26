@@ -9,7 +9,10 @@ pipeline {
 
     stage('build') {
       steps {
-        tool 'gradlew'
+        sh '''echo \'start bootJar\' 
+chmod +x gradlew
+./gradlew clean bootJar
+'''
       }
     }
 
