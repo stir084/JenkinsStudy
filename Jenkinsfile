@@ -7,5 +7,17 @@ pipeline {
       }
     }
 
+    stage('build') {
+      steps {
+        tool 'gradle'
+      }
+    }
+
+    stage('deploy') {
+      steps {
+        sh 'echo "hi"'
+      }
+    }
+
   }
 }
