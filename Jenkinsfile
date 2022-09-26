@@ -17,7 +17,28 @@ pipeline {
 
     stage('deploy') {
       steps {
-        sshPublisher()
+        sshPublisher(publishers: 
+                    [
+                        sshPublisherDesc(
+                            configName: 'ssh', 
+                            transfers: [sshTransfer(
+                                cleanRemote: false, 
+                                excludes: '', 
+                                execCommand: 'sh /deploy/test.sh', 
+                                execTimeout: 120000, flatten: false, 
+                                makeEmptyDirs: false, 
+                                noDefaultExcludes: false, 
+                                patternSeparator: '[, ]+', 
+                                remoteDirectory: '/deploy', 
+                                remoteDirectorySDF: false, 
+                                removePrefix: 'build/libs', 
+                                sourceFiles: 'build/libs/*.jar'
+                            )], 
+                            usePromotionTimestamp: false, 
+                            useWorkspaceInPromotion: false, 
+                            verbose: true
+                        )
+                    ])
       }
     }
 
