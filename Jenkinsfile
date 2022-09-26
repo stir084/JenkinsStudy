@@ -15,5 +15,11 @@ pipeline {
       }
     }
 
+    stage('d') {
+      steps {
+        sshPublisher(alwaysPublishFromMaster: true)
+      }
+    }
+
   }
 }
